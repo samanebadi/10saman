@@ -1,15 +1,28 @@
-package datastructures.queues;
 
-import datastructures.interfaces.Queue;
-import datastructures.lists.CustomLinkedList;
+package datastructures;
 
-public class CustomQueue<T> implements Queue<T> {
-    private CustomLinkedList<T> list;
+import java.util.LinkedList;
+
+public class CustomQueue<T> {
+    private LinkedList<T> list;
 
     public CustomQueue() {
-        list = new CustomLinkedList<>();
+        list = new LinkedList<>();
     }
 
-    // TODO: Override and fill the methods to complete the data structure
+    public void add(T item) {
+        list.addLast(item);
+    }
 
+    public T poll() {
+        return list.isEmpty() ? null : list.removeFirst();
+    }
+
+    public boolean isEmpty() {
+        return list.isEmpty();
+    }
+
+    public T peek() {
+        return list.peekFirst();
+    }
 }

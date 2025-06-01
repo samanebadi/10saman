@@ -1,24 +1,31 @@
-package datastructures.lists;
 
-import datastructures.interfaces.List;
+package datastructures;
 
 import java.util.Arrays;
 
-public class CustomArrayList<T> implements List<T> {
-    private static final int INITIAL_CAPACITY = 10;
-    private Object[] elements;
-    private int size = 0;
+public class CustomArrayList<T> {
+    private Object[] array;
+    private int size;
 
     public CustomArrayList() {
-        elements = new Object[INITIAL_CAPACITY];
+        array = new Object[10];
+        size = 0;
     }
 
-    private void ensureCapacity() {
-        if (size == elements.length) {
-            elements = Arrays.copyOf(elements, elements.length * 2);
+    public void add(T element) {
+        if (size == array.length) {
+            array = Arrays.copyOf(array, size * 2);
         }
+        array[size++] = element;
     }
 
-    // TODO: Override and fill the methods to complete the data structure
+    @SuppressWarnings("unchecked")
+    public T get(int index) {
+        if (index >= size || index < 0) throw new IndexOutOfBoundsException();
+        return (T) array[index];
+    }
 
+    public int size() {
+        return size;
+    }
 }

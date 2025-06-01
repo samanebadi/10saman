@@ -1,37 +1,23 @@
-package library;
+
+package library.management;
 
 import java.util.Date;
 
 public class Transaction {
-    private String transactionId;
-    private String bookTitle;
-    private String memberName;
-    private Date transactionDate;
-    private String type; // "BORROW" or "RETURN"
+    private String memberId;
+    private String isbn;
+    private String action;
+    private Date timestamp;
 
-    public Transaction(String transactionId, String bookName, String memberName, String type) {
-        this.transactionId = transactionId;
-        this.bookTitle = bookName;
-        this.memberName = memberName;
-        this.transactionDate = new Date();
-        this.type = type;
+    public Transaction(String memberId, String isbn, String action) {
+        this.memberId = memberId;
+        this.isbn = isbn;
+        this.action = action;
+        this.timestamp = new Date();
     }
 
-    // Getters
-    public String getTransactionId() { return transactionId; }
-    public String getBookTitle() { return bookTitle; }
-    public String getMember() { return memberName; }
-    public Date getTransactionDate() { return transactionDate; }
-    public String getType() { return type; }
-
-    @Override
-    public String toString() {
-        return "Transaction{" +
-                "transactionId = '" + transactionId + '\'' +
-                ", book = " + bookTitle +
-                ", member = " + memberName +
-                ", transactionDate = " + transactionDate +
-                ", type = '" + type + '\'' +
-                '}';
-    }
+    public String getMemberId() { return memberId; }
+    public String getIsbn() { return isbn; }
+    public String getAction() { return action; }
+    public Date getTimestamp() { return timestamp; }
 }

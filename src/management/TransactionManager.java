@@ -1,33 +1,42 @@
-package management;
 
-import library.Book;
-import library.Member;
-import library.Transaction;
+package library.management;
 
-import java.util.Date;
+import datastructures.CustomArrayList;
 
 public class TransactionManager {
-    // TODO: Define a data structure that stores transactions
+    private CustomArrayList<Transaction> transactions;
 
     public TransactionManager() {
-        // TODO: Initialize your data structure here
+        transactions = new CustomArrayList<>();
     }
 
-    public Transaction addTransaction(String bookTitle, String memberName, String type) {
-
-        Transaction transaction = new Transaction(
-                "TXN-" + new Date().getTime(),
-                bookTitle,
-                memberName,
-                type
-        );
-
-        // TODO: Add the transaction to your data structure
-        return transaction;
+    public void addTransaction(Transaction transaction) {
+        transactions.add(transaction);
     }
 
-    public Transaction getTransactionByIndex(int index) {
-        // TODO:
-        return null;
+    public CustomArrayList<Transaction> getAllTransactions() {
+        return transactions;
+    }
+
+    public CustomArrayList<Transaction> getTransactionsByMember(String memberId) {
+        CustomArrayList<Transaction> result = new CustomArrayList<>();
+        for (int i = 0; i < transactions.size(); i++) {
+            Transaction t = transactions.get(i);
+            if (t.getMemberId().equals(memberId)) {
+                result.add(t);
+            }
+        }
+        return result;
+    }
+
+    public CustomArrayList<Transaction> getTransactionsByBook(String isbn) {
+        CustomArrayList<Transaction> result = new CustomArrayList<>();
+        for (int i = 0; i < transactions.size(); i++) {
+            Transaction t = transactions.get(i);
+            if (t.getIsbn().equals(isbn)) {
+                result.add(t);
+            }
+        }
+        return result;
     }
 }

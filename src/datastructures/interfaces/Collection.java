@@ -1,9 +1,10 @@
-package datastructures.interfaces;
+package interfaces;
 
 public interface Collection<T> {
+    boolean add(T element);
+    boolean remove(T element);
+    boolean contains(T element);
     int size();
     boolean isEmpty();
-    boolean add(T t);
-    boolean contains(Object o);
-    boolean remove(Object o);
 }
+
